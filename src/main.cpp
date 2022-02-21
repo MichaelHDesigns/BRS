@@ -2000,14 +2000,21 @@ int64_t GetBlockValue(int nHeight)
 {
     int64_t nSubsidy = 0;
 
-    int PremineValue = 60000; //60k Premine for swap
+    int PremineValue = 20000000; //60k Premine for swap
 	int GenesisValue = 0;
 
     nHeight--;
-	if (nHeight == 0)														{ nSubsidy = GenesisValue * COIN; 
-	} else if (nHeight == 1)												{ nSubsidy = PremineValue * COIN;
-	} else if (nHeight > 1 && nHeight <= Params().LAST_POW_BLOCK())			{ nSubsidy = 0 * COIN;
-    } else if (nHeight > Params().LAST_POW_BLOCK())		                    { nSubsidy = 0.1 * COIN; }
+	if (nHeight == 0) { 
+		nSubsidy = GenesisValue * COIN; 
+	} 
+	else if (nHeight == 1) { 
+		nSubsidy = PremineValue * COIN;
+	}
+	else if (nHeight > 1 && nHeight <= Params().LAST_POW_BLOCK())
+	{ nSubsidy = 5000 * COIN;
+    } 
+	else if (nHeight > Params().LAST_POW_BLOCK())
+	{ nSubsidy = 1000 * COIN; }
 
     // Check if we reached the coin max supply.
     int64_t nMoneySupply = chainActive.Tip()->nMoneySupply;
@@ -2028,7 +2035,7 @@ int64_t GetMasternodePayment(int nHeight, int64_t blockValue, int nMasternodeCou
     if (nHeight >= 0 && nHeight <= Params().LAST_POW_BLOCK()) {
         ret = 0;
     } else {
-        ret = 0.075 * COIN;
+        ret = 0.5 * COIN;
     }
         return ret;
 
