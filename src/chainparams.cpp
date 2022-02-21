@@ -160,12 +160,12 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x45;
-        pchMessageStart[1] = 0xb7;
-        pchMessageStart[2] = 0xf1;
-        pchMessageStart[3] = 0xcb;
+        pchMessageStart[0] = 0xb3;
+        pchMessageStart[1] = 0xa4;
+        pchMessageStart[2] = 0xd2;
+        pchMessageStart[3] = 0xc7;
         vAlertPubKey = ParseHex("0000098d3ba6ba6e7423fa5cbd6a89e0a9a5348f88d332b44a5cb1a8b7ed2c1eaa335fc8dc4f012cb8241cc0bdafd6ca70c5f5448916e4e6f511bcd746ed57dc50");
-        nDefaultPort = 6744;
+        nDefaultPort = 6105;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // DailyCrypto starting difficulty is 1 / 2^12
         bnProofOfStakeLimit = ~uint256(0) >> 24;
         bnProofOfStakeLimit_V2 = ~uint256(0) >> 20; // 60/4 = 15 ==> use 2**4 higher limit
@@ -179,20 +179,20 @@ public:
         nTargetTimespan = 40 * 60;                     // 40 minutes
         nTimeSlotLength = 15;                          // 15 seconds
         nTargetTimespan_V2 = 2 * nTimeSlotLength * 60; // 30 minutes
-        nMaturity = 75;
-        nStakeMinAge = 60 * 480; // 8 hours (60 * 480 = 28800 seconds)
-        nStakeMinDepth = 200;
+        nMaturity = 6;
+        nStakeMinAge = 60 * 60; // 1 hours
+        nStakeMinDepth = 10;
         nFutureTimeDriftPoW = 7200;
         nFutureTimeDriftPoS = 180;
         nMasternodeCountDrift = 20;
-        nMaxMoneyOut = 6000000 * COIN;
+        nMaxMoneyOut = 999999999999 * COIN;
         nMinColdStakingAmount = 1 * COIN;
 
-        nCollateralMaturity = 131400;                 // 3 month locking period after nCollateralMaturityEnforcementHeight is reached
-        nCollateralMaturityEnforcementHeight = 10000; // Starting at block 10k to give time to setup nodes
+        nCollateralMaturity = 1000;                 // 3 month locking period after nCollateralMaturityEnforcementHeight is reached
+        nCollateralMaturityEnforcementHeight = 50; // Starting at block 50 to give time to setup nodes
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 500;
+        nLastPOWBlock = 100;
         nDailyCryptoBadBlockTime = 15864391230; // This hasnt happened so irrelevant
         nDailyCryptoBadBlocknBits = 0x00;       // This hasnt happened so irrelevant
         nModifierUpdateBlock = 50;
@@ -259,11 +259,10 @@ public:
         assert(hashGenesisBlock == uint256("0x0000008ee9550dfbb15f5c59a4c34836c83def986e374736d0135dbf2f2f0388"));
         assert(genesis.hashMerkleRoot == uint256("0xa203559b71db256b66b8f4c133d46673a697eeae84d847e1a9624e9db2c146ea"));
 
-        vSeeds.push_back(CDNSSeedData("45.61.138.110", "45.61.138.110"));
-        vSeeds.push_back(CDNSSeedData("45.61.138.143", "45.61.138.143"));
-        vSeeds.push_back(CDNSSeedData("45.61.139.41", "45.61.139.41"));
+        vSeeds.push_back(CDNSSeedData("159.223.150.209", "159.223.150.209"));
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 30);  // D
+
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 25);  // B
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 38);  // G
         base58Prefixes[STAKING_ADDRESS] = std::vector<unsigned char>(1, 63); // S
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 212);
